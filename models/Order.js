@@ -1,5 +1,6 @@
 import { Order as OrderMapping } from './mapping.js'
 import { OrderItem as OrderItemMapping } from './mapping.js'
+import { OrderStatus as OrderStatusMapping } from './mapping.js'
 import AppError from '../errors/AppError.js'
 
 class Order {
@@ -8,6 +9,9 @@ class Order {
         if (userId) {
             options.where = {userId}
         }
+
+        options.include = [{model: OrderStatusMapping, as: 'order_status', attributes: ['name']}]
+
         const orders = await OrderMapping.findAll(options)
         return orders
     }
@@ -17,6 +21,7 @@ class Order {
             where: {id},
             include: [
                 {model: OrderItemMapping, as: 'items', attributes: ['id', 'name', 'price', 'quantity']},
+                {model: OrderStatusMapping, as: 'order_status', attributes: ['name']},
             ],
         }
         if (userId) options.where.userId = userId
@@ -32,9 +37,9 @@ class Order {
         const items = data.items
         const amount = items.reduce((sum, item) => sum + item.price * item.quantity, 0)
         // данные для создания заказа
-        const {name, email, phone, address, comment = null, userId = null} = data
+        const {name, email, phone, address, comment = null, userId = null, orderStatusId = 1} = data
         const order = await OrderMapping.create({
-            name, email, phone, address, comment, amount, userId
+            name, email, phone, address, comment, amount, userId, orderStatusId
         })
         // товары, входящие в заказ
         for (let item of items) {
@@ -42,7 +47,7 @@ class Order {
                 name: item.name,
                 price: item.price,
                 quantity: item.quantity,
-                orderId: order.id
+                orderId: order.id,                
             })
         }
         // возвращать будем заказ с составом

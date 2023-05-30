@@ -8,6 +8,16 @@ Content-type: application/json; charset=utf-8
     "password": "qwerty"
 }
 
+### Регистрация нового пользователя
+POST /api/user/signup HTTP/1.1
+Host: localhost:7000
+Content-type: application/json; charset=utf-8
+
+{
+    "email": "user@mail.ru",
+    "password": "qwerty"
+}
+
 ### Аутентификация (вход) пользователя
 POST /api/user/login HTTP/1.1
 Host: localhost:7000
@@ -15,6 +25,16 @@ Content-type: application/json; charset=utf-8
 
 {
     "email": "admin@mail.ru",
+    "password": "qwerty"
+}
+
+### Аутентификация (вход) пользователя
+POST /api/user/login HTTP/1.1
+Host: localhost:7000
+Content-type: application/json; charset=utf-8
+
+{
+    "email": "user@mail.ru",
     "password": "qwerty"
 }
 

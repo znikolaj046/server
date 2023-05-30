@@ -15,7 +15,6 @@ const Order = sequelize.define('order', {
     phone: {type: DataTypes.STRING, allowNull: false},
     address: {type: DataTypes.STRING, allowNull: false},
     amount: {type: DataTypes.INTEGER, allowNull: false},
-    status: {type: DataTypes.INTEGER, allowNull: false, defaultValue: 0},
     comment: {type: DataTypes.STRING},
     prettyCreatedAt: {
         type: DataTypes.VIRTUAL,
@@ -49,6 +48,11 @@ const OrderItem = sequelize.define('order_item', {
     name: {type: DataTypes.STRING, allowNull: false},
     price: {type: DataTypes.INTEGER, allowNull: false},
     quantity: {type: DataTypes.INTEGER, allowNull: false},
+})
+
+const OrderStatus = sequelize.define('order_status', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    name: {type: DataTypes.STRING, allowNull: false}
 })
 //role: {type: DataTypes.STRING, defaultValue: 'USER', comment: 'роль (Админ)'},
 // модель «Пользователь», таблица БД «users»
@@ -95,6 +99,7 @@ const OrderProduct = sequelize.define('order_product', {
 const Product = sequelize.define('product', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING, unique: true, allowNull: false, comment: 'Наименование товара'},
+    alias: {type: DataTypes.STRING, unique: true, allowNull: false, comment: 'ЧПУ товара'},
     price: {type: DataTypes.INTEGER, allowNull: false, comment: 'Цена товара'},
     image: {type: DataTypes.STRING, allowNull: false},
     status: {type: DataTypes.INTEGER, allowNull: false, comment: 'Статус (отображать/не отображать)'}
@@ -104,12 +109,14 @@ const Product = sequelize.define('product', {
 const Category = sequelize.define('category', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING, unique: true, allowNull: false, comment: 'Наименование категории'},
+    alias: {type: DataTypes.STRING, unique: true, allowNull: false, comment: 'ЧПУ категории'},
 }, {comment: 'Категория товара'})
 
 // модель «Бренд», таблица БД «brands»
 const Brand = sequelize.define('brand', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING, unique: true, allowNull: false, comment: 'Наименование бренда'},
+    alias: {type: DataTypes.STRING, unique: true, allowNull: false, comment: 'ЧПУ бренды'},
 }, {comment: 'Бренд товара'})
 
 const Banner = sequelize.define('banner', {
@@ -252,6 +259,8 @@ OrderItem.belongsTo(Order)
 User.hasMany(Order, {as: 'orders', onDelete: 'SET NULL'})
 Order.belongsTo(User)
 
+OrderStatus.hasMany(Order, {as: 'orders', onDelete: 'SET NULL'})
+Order.belongsTo(OrderStatus)
 
 export {
     User,
@@ -267,6 +276,7 @@ export {
     ProductImage,
     Order,
     OrderItem,
+    OrderStatus,
     Banner,
     ProductHydroschemes,
     ProductMaterials,

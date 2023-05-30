@@ -23,10 +23,11 @@ class Category {
 
     async getOne(req, res, next) {
         try {
-            if (!req.params.id) {
+            if (!req.params.alias) {
                 throw new Error('Не указан id категории')
             }
-            const category = await CategoryMapping.findByPk(req.params.id)
+
+            const category = await CategoryModel.getOne(req.params.alias)
             if (!category) {
                 throw new Error('Категория не найдена в БД')
             }
@@ -38,7 +39,7 @@ class Category {
 
     async create(req, res, next) {
         try {
-            const category = await CategoryMapping.create({name: req.body.name})
+            const category = await CategoryModel.create({name: req.body.name, categoryId: req.body.categoryId})
             res.json(category)
         } catch(e) {
             next(AppError.badRequest(e.message))
@@ -50,12 +51,8 @@ class Category {
             if (!req.params.id) {
                 throw new Error('Не указан id категории')
             }
-            const category = await CategoryMapping.findByPk(req.params.id)
-            if (!category) {
-                throw new Error('Категория не найдена в БД')
-            }
-            const name = req.body.name ?? category.name
-            await category.update({name})
+            const id = req.params.id
+            const category = await CategoryModel.update(id, {name: req.body.name, categoryId: req.body.categoryId})
             res.json(category)
         } catch(e) {
             next(AppError.badRequest(e.message))

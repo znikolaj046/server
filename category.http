@@ -3,7 +3,7 @@ GET /api/category/getall HTTP/1.1
 Host: localhost:7000
 
 ### Получить одну категорию
-GET /api/category/getone/1 HTTP/1.1
+GET /api/category/getone/klapani_21 HTTP/1.1
 Host: localhost:7000
 
 ### Создать новую категорию
@@ -30,7 +30,7 @@ Content-type: application/json; charset=utf-8
 ### Создать новую категорию
 POST /api/category/create HTTP/1.1
 Host: localhost:7000
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg1MzExMTQ2LCJleHAiOjE2ODU0ODM5NDZ9.yvhH2nRGFQ2RcwWK--PBA5l2mgpkLfxHbT8IyL6fFUQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6MSwiaWF0IjoxNjg1NDU4NzEyLCJleHAiOjE2ODU2MzE1MTJ9.rjNeic9PZl0k4e-zeWtXHsvmCFYir2FagsSrjHY8S1s
 Content-type: application/json; charset=utf-8
 
 {
@@ -40,11 +40,11 @@ Content-type: application/json; charset=utf-8
 ### Обновить категорию
 PUT /api/category/update/1 HTTP/1.1
 Host: localhost:7000
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJ1c2VyNUBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjM4MDk4MjQ0LCJleHAiOjE2MzgxODQ2NDR9.eDlzfF2R1yFwpjhf-Sx6k3J2WbknyBlnLr7RIk87TTA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6MSwiaWF0IjoxNjg1NDU4NzEyLCJleHAiOjE2ODU2MzE1MTJ9.rjNeic9PZl0k4e-zeWtXHsvmCFYir2FagsSrjHY8S1s
 Content-type: application/json; charset=utf-8
 
 {
-    "name": "Первая категория (new)"
+    "name": "Клапаны 21"
 }
 
 ### Удалить категорию

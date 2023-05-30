@@ -2,7 +2,7 @@ import AppError from '../errors/AppError.js'
 
 const admin = (req, res, next) => {
     try {
-        if (req.auth.role !== 'ADMIN') {
+        if (req.auth.role !== 'ADMIN' && req.auth.role != 1 ) {
             throw new Error('Только для администратора')
         }
         next()

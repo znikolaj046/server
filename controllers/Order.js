@@ -18,7 +18,7 @@ class Order {
 
     async create(req, res, next, type) {
         try {
-            const {name, email, phone, address, comment = null} = req.body
+            const {name, email, phone, address, comment = null, orderStatusId = 1} = req.body
             // данные для создания заказа
             if (!name) throw new Error('Не указано имя покупателя')
             if (!email) throw new Error('Не указан email покупателя')
@@ -48,7 +48,7 @@ class Order {
 
             // все готово, можно создавать
             const order = await OrderModel.create({
-                name, email, phone, address, comment, items, userId
+                name, email, phone, address, comment, items, userId, orderStatusId
             })
             // корзину теперь нужно очистить
             await BasketModel.clear(parseInt(req.signedCookies.basketId))
@@ -105,6 +105,7 @@ class Order {
 
     async userGetAll(req, res, next) {
         try {
+            console.log(res.auth)
             const orders = await OrderModel.getAll(req.auth.id)
             res.json(orders)
         } catch(e) {

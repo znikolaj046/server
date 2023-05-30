@@ -18,7 +18,7 @@ class User {
             if (!email || !password) {
                 throw new Error('Пустой email или пароль')
             }
-            if (role !== 'USER') {
+            if (role !== 'USER' && role !== 2) {
                 throw new Error('Возможна только роль USER')
             }
             const hash = await bcrypt.hash(password, 5)
@@ -38,7 +38,7 @@ class User {
             if (!compare) {
                 throw new Error('Указан неверный пароль')
             }
-            const token = makeJwt(user.id, user.email, user.role)
+            const token = makeJwt(user.id, user.email, user.roleId)
             return res.json({token})
         } catch(e) {
             next(AppError.badRequest(e.message))
@@ -46,7 +46,7 @@ class User {
     }
 
     async check(req, res, next) {
-        const token = makeJwt(req.auth.id, req.auth.email, req.auth.role)
+        const token = makeJwt(req.auth.id, req.auth.email, req.auth.roleId)
         return res.json({token})
     }
 
@@ -72,16 +72,16 @@ class User {
     }
 
     async create(req, res, next) {
-        const {email, password, role = 'USER'} = req.body
+        const {email, password, roleId = 2} = req.body
         try {
             if (!email || !password) {
                 throw new Error('Пустой email или пароль')
             }
-            if ( ! ['USER', 'ADMIN'].includes(role)) {
+            /*if ( ! ['USER', 'ADMIN'].includes(role)) {
                 throw new Error('Недопустимое значение роли')
-            }
+            }*/
             const hash = await bcrypt.hash(password, 5)
-            const user = await UserModel.create({email, password: hash, role})
+            const user = await UserModel.create({email, password: hash, roleId})
             return res.json(user)
         } catch(e) {
             next(AppError.badRequest(e.message))
@@ -96,14 +96,14 @@ class User {
             if (Object.keys(req.body).length === 0) {
                 throw new Error('Нет данных для обновления')
             }
-            let {email, password, role} = req.body
-            if (role && !['USER', 'ADMIN'].includes(role)) {
+            let {email, password, roleId} = req.body
+            /*if (role && !['USER', 'ADMIN'].includes(role)) {
                 throw new Error('Недопустимое значение роли')
-            }
+            }*/
             if (password) {
                 password = await bcrypt.hash(password, 5)
             }
-            const user = await UserModel.update(req.params.id, {email, password, role})
+            const user = await UserModel.update(req.params.id, {email, password, roleId})
             res.json(user)
         } catch(e) {
             next(AppError.badRequest(e.message))

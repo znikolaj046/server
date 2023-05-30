@@ -6,6 +6,7 @@ import { ProductPropValues as ProductPropValuesMapping } from './mapping.js'
 import { Brand as BrandMapping } from './mapping.js'
 import { Category as CategoryMapping } from './mapping.js'
 import FileService from '../services/File.js'
+import Translit from '../controllers/Translit.js'
 import { Op } from 'sequelize'
 import AppError from '../errors/AppError.js'
 
@@ -91,7 +92,8 @@ class Product {
         // поскольку image не допускает null, задаем пустую строку
         const image = FileService.save(img) ?? ''
         const {name, price, categoryId = null, brandId = null} = data
-        const product = await ProductMapping.create({name, price, image, categoryId, brandId})
+        const alias = Translit(name)
+        const product = await ProductMapping.create({name, price, image, categoryId, brandId, alias})
         if (data.props) { // свойства товара
             const props = JSON.parse(data.props)
             for (let prop of props) {
@@ -116,7 +118,7 @@ class Product {
         if (file && product.image) {
             FileService.delete(product.image)
         }
-        // подготавливаем данные, которые надо обновить в базе данных
+        // подготавливаем данные, которые надо обновить в базе данных        
         const {
             name = product.name,
             price = product.price,
@@ -124,7 +126,8 @@ class Product {
             brandId = product.brandId,
             image = file ? file : product.image
         } = data
-        await product.update({name, price, image, categoryId, brandId})
+        const alias = Translit(name)
+        await product.update({name, price, image, categoryId, brandId, alias})
         return product
     }
 

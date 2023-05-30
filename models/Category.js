@@ -1,4 +1,5 @@
 import { Category as CategoryMapping } from './mapping.js'
+import Translit from '../controllers/Translit.js'
 import AppError from '../errors/AppError.js'
 
 class Category {
@@ -11,8 +12,13 @@ class Category {
         return categories
     }
 
-    async getOne(id) {
-        const category = await CategoryMapping.findByPk(id)
+    async getOne(alias) {
+        const where = {}
+        where.alias = alias
+        console.log(where)
+        const category = await CategoryMapping.findOne({
+            where
+        })
         if (!category) {
             throw new Error('Категория не найдена в БД')
         }
@@ -20,8 +26,10 @@ class Category {
     }
 
     async create(data) {
-        const {name} = data
-        const category = await CategoryMapping.create({name})
+        const {name, categoryId} = data
+        const alias = Translit(name)
+        console.log(alias)
+        const category = await CategoryMapping.create({name, categoryId, alias})
         return category
     }
 
@@ -30,8 +38,10 @@ class Category {
         if (!category) {
             throw new Error('Категория не найдена в БД')
         }
-        const {name = category.name} = data
-        await category.update({name})
+
+        const {alias = Translit(data.name), name = category.name, categoryId = category.categoryId} = data
+        console.log('alias', alias)
+        await category.update({name, categoryId, alias})
         return category
     }
 

@@ -35,7 +35,7 @@ Content-type: application/json; charset=utf-8
 ### Список всех заказов пользователя
 GET /api/order/user/getall HTTP/1.1
 Host: localhost:7000
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJ1c2VyM0BtYWlsLnJ1Iiwicm9sZSI6IlVTRVIiLCJpYXQiOjE2NDIxNDY1MDUsImV4cCI6MTY0MjIzMjkwNX0.vbDBq-hR1B8Bqdj4zu_75McGKaqapEBsepKP3LtpMnQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1c2VyQG1haWwucnUiLCJpYXQiOjE2ODU0NTQxMzYsImV4cCI6MTY4NTYyNjkzNn0.EO_LJrOLiBL1JxZvk3ih8jqtc-OhyrFHXNQnY8E1XGw
 Cookie: basketId=s%3A38.mDPMc%2FsU2MOOiCtZZFPZ%2F9KWza4peanqnQoquOqX26o
 ### нужен jwt-токен, чтобы из него получить id пользователя
 
