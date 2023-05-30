@@ -1,0 +1,57 @@
+### Регистрация нового пользователя
+POST /api/user/signup HTTP/1.1
+Host: localhost:7000
+Content-type: application/json; charset=utf-8
+
+{
+    "email": "admin@mail.ru",
+    "password": "qwerty"
+}
+
+### Аутентификация (вход) пользователя
+POST /api/user/login HTTP/1.1
+Host: localhost:7000
+Content-type: application/json; charset=utf-8
+
+{
+    "email": "admin@mail.ru",
+    "password": "qwerty"
+}
+
+### Список всех пользователей
+GET /api/user/getall HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg0NDEyMTc5LCJleHAiOjE2ODQ1ODQ5Nzl9.07N_C2YVRU15v1_LoJs8jFe0-PRUC5OoiL0VkMA_U6A
+Host: localhost:7000
+
+### Получить одного пользователя
+GET /api/user/getone/1 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg0NDEyMTc5LCJleHAiOjE2ODQ1ODQ5Nzl9.07N_C2YVRU15v1_LoJs8jFe0-PRUC5OoiL0VkMA_U6A
+Host: localhost:7000
+
+### Создать нового пользователя
+POST /api/user/create HTTP/1.1
+Host: localhost:7000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg0NDEyMTc5LCJleHAiOjE2ODQ1ODQ5Nzl9.07N_C2YVRU15v1_LoJs8jFe0-PRUC5OoiL0VkMA_U6A
+Content-type: application/json; charset=utf-8
+
+{
+    "email": "admin@mail.ru",
+    "password": "qwerty",
+    "role": "ADMIN"
+}
+
+### Обновить пользователя
+PUT /api/user/update/1 HTTP/1.1
+Host: localhost:7000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg0MTU2NTE2LCJleHAiOjE2ODQzMjkzMTZ9.k0GtMNYWEQRLVRRu2VEE5tropKhUNL4TD4fsadfHpmA
+Content-type: application/json; charset=utf-8
+
+{
+    "email": "updated@mail.ru",
+    "password": "qwerty(updated)"
+}
+
+### Удалить пользователя
+DELETE /api/user/delete/2 HTTP/1.1
+Host: localhost:7000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg0MTU2NTE2LCJleHAiOjE2ODQzMjkzMTZ9.k0GtMNYWEQRLVRRu2VEE5tropKhUNL4TD4fsadfHpmA

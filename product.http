@@ -1,0 +1,273 @@
+### Список всех товаров
+GET /api/product/getall/filter/1-is-MTA=-or-1-is-MTU=?page=1&limit=3
+Host: localhost:7000
+
+### Список всех товаров
+GET /api/product/getall HTTP/1.1
+Host: localhost:7000
+
+### Получить один товар
+GET /api/product/getone/1 HTTP/1.1
+Host: localhost:7000
+
+### Создать новый товар
+POST /api/product/create HTTP/1.1
+Host: localhost:7000
+Content-Type: multipart/form-data; boundary=MultiPartFormDataBoundary
+
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="name"
+Content-Type: text/plain; charset=utf-8
+
+Товар № 26
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="price"
+Content-Type: text/plain; charset=utf-8
+
+77777
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="props"
+Content-type: text/plain; charset=utf-8
+
+[{"name": "Свойство 3", "value": "Значение 3"},{"name": "Свойство 4", "value": "Значение 4"}]
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="image"; filename="picture.jpg"
+Content-Type: image/jpeg
+
+< ./picture.jpg
+--MultiPartFormDataBoundary--
+
+### Обновить товар
+PUT /api/product/update/4 HTTP/1.1
+Host: localhost:7000
+Content-Type: multipart/form-data; boundary=MultiPartFormDataBoundary
+
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="name"
+Content-Type: text/plain; charset=utf-8
+
+Товар № 4 (new)
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="price"
+Content-Type: text/plain; charset=utf-8
+
+99999
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="props"
+Content-type: text/plain; charset=utf-8
+
+[{"name": "Свойство 3 (new)", "value": "Значение 3 (new)"},{"name": "Свойство 4 (new)", "value": "Значение 4 (new)"}]
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="image"; filename="picture.jpg"
+Content-Type: image/jpeg
+
+< ./picture-new.jpg
+--MultiPartFormDataBoundary--
+
+### Удалить товар
+DELETE /api/product/delete/5 HTTP/1.1
+Host: localhost:7000
+
+### Список всех свойств товара id=1
+GET /api/product/1/property/getall HTTP/1.1
+Host: localhost:7000
+
+### Получить одно свойство товара
+GET /api/product/1/property/getone/1 HTTP/1.1
+Host: localhost:7000
+
+### Создать новое свойство товара
+POST /api/product/1/property/create HTTP/1.1
+Host: localhost:7000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg0NDEyMTc5LCJleHAiOjE2ODQ1ODQ5Nzl9.07N_C2YVRU15v1_LoJs8jFe0-PRUC5OoiL0VkMA_U6A
+Content-type: application/json; charset=utf-8
+
+{
+    "productPropId": 1,
+    "value": 10
+}
+
+### Создать новое свойство товара
+POST /api/product/1/property/create HTTP/1.1
+Host: localhost:7000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg0NDEyMTc5LCJleHAiOjE2ODQ1ODQ5Nzl9.07N_C2YVRU15v1_LoJs8jFe0-PRUC5OoiL0VkMA_U6A
+Content-type: application/json; charset=utf-8
+
+{
+    "productPropId": 2,
+    "value": 20
+}
+
+### Создать новое свойство товара
+POST /api/product/1/property/create HTTP/1.1
+Host: localhost:7000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg0NDEyMTc5LCJleHAiOjE2ODQ1ODQ5Nzl9.07N_C2YVRU15v1_LoJs8jFe0-PRUC5OoiL0VkMA_U6A
+Content-type: application/json; charset=utf-8
+
+{
+    "productPropId": 3,
+    "value": 2
+}
+
+### Обновить свойство товара
+PUT /api/product/1/property/update/3 HTTP/1.1
+Host: localhost:7000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg0NDEyMTc5LCJleHAiOjE2ODQ1ODQ5Nzl9.07N_C2YVRU15v1_LoJs8jFe0-PRUC5OoiL0VkMA_U6A
+Content-type: application/json; charset=utf-8
+
+{
+    "value": 3
+}
+
+### Удалить свойство товара
+DELETE /api/product/1/property/delete/3 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg0NDEyMTc5LCJleHAiOjE2ODQ1ODQ5Nzl9.07N_C2YVRU15v1_LoJs8jFe0-PRUC5OoiL0VkMA_U6A
+Host: localhost:7000
+
+
+### Список всех свойств товара id=1
+GET /api/product/1/scheme/getall HTTP/1.1
+Host: localhost:7000
+
+
+### Получить одно свойство товара
+GET /api/product/1/scheme/getone/1 HTTP/1.1
+Host: localhost:7000
+
+
+### Создать новую схему
+POST /api/product/1/scheme/create HTTP/1.1
+Host: localhost:7000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg0NDEyMTc5LCJleHAiOjE2ODQ1ODQ5Nzl9.07N_C2YVRU15v1_LoJs8jFe0-PRUC5OoiL0VkMA_U6A
+Content-Type: multipart/form-data; boundary=MultiPartFormDataBoundary
+
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="title"
+Content-Type: text/plain; charset=utf-8
+
+Схема 1
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="status"
+Content-Type: text/plain; charset=utf-8
+
+1
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="description"
+Content-type: text/plain; charset=utf-8
+
+Описание
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="image"; filename="picture.jpg"
+Content-Type: image/jpeg
+
+< ./picture.jpg
+--MultiPartFormDataBoundary--
+
+
+### Обновить схему
+POST /api/product/1/scheme/update/1 HTTP/1.1
+Host: localhost:7000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg0NDEyMTc5LCJleHAiOjE2ODQ1ODQ5Nzl9.07N_C2YVRU15v1_LoJs8jFe0-PRUC5OoiL0VkMA_U6A
+Content-Type: multipart/form-data; boundary=MultiPartFormDataBoundary
+
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="title"
+Content-Type: text/plain; charset=utf-8
+
+Схема 11
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="status"
+Content-Type: text/plain; charset=utf-8
+
+1
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="description"
+Content-type: text/plain; charset=utf-8
+
+Описание 1
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="image"; filename="picture.jpg"
+Content-Type: image/jpeg
+
+< ./picture.jpg
+--MultiPartFormDataBoundary--
+
+
+### Удалить гидросхему
+DELETE /api/product/1/scheme/delete/3 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg0NDEyMTc5LCJleHAiOjE2ODQ1ODQ5Nzl9.07N_C2YVRU15v1_LoJs8jFe0-PRUC5OoiL0VkMA_U6A
+Host: localhost:7000
+
+
+### Список всех свойств товара id=1
+GET /api/product/1/material/getall HTTP/1.1
+Host: localhost:7000
+
+
+### Получить одно свойство товара
+GET /api/product/1/material/getone/1 HTTP/1.1
+Host: localhost:7000
+
+
+### Создать новую схему
+POST /api/product/1/material/create HTTP/1.1
+Host: localhost:7000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg0NDEyMTc5LCJleHAiOjE2ODQ1ODQ5Nzl9.07N_C2YVRU15v1_LoJs8jFe0-PRUC5OoiL0VkMA_U6A
+Content-Type: multipart/form-data; boundary=MultiPartFormDataBoundary
+
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="title"
+Content-Type: text/plain; charset=utf-8
+
+Схема 1
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="status"
+Content-Type: text/plain; charset=utf-8
+
+1
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="description"
+Content-type: text/plain; charset=utf-8
+
+Описание
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="image"; filename="picture.jpg"
+Content-Type: image/jpeg
+
+< ./picture.jpg
+--MultiPartFormDataBoundary--
+
+
+### Обновить схему
+POST /api/product/1/material/update/1 HTTP/1.1
+Host: localhost:7000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg0NDEyMTc5LCJleHAiOjE2ODQ1ODQ5Nzl9.07N_C2YVRU15v1_LoJs8jFe0-PRUC5OoiL0VkMA_U6A
+Content-Type: multipart/form-data; boundary=MultiPartFormDataBoundary
+
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="title"
+Content-Type: text/plain; charset=utf-8
+
+Схема 112
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="status"
+Content-Type: text/plain; charset=utf-8
+
+1
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="description"
+Content-type: text/plain; charset=utf-8
+
+Описание 1
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="image"; filename="picture.jpg"
+Content-Type: image/jpeg
+
+< ./picture.jpg
+--MultiPartFormDataBoundary--
+
+
+### Удалить гидросхему
+DELETE /api/product/1/material/delete/3 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg0NDEyMTc5LCJleHAiOjE2ODQ1ODQ5Nzl9.07N_C2YVRU15v1_LoJs8jFe0-PRUC5OoiL0VkMA_U6A
+Host: localhost:7000

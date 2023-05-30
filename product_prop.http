@@ -1,0 +1,72 @@
+### Список всех свойств товара id=1
+GET /api/category/property/getvalues HTTP/1.1
+Host: localhost:7000
+
+### Список всех свойств товара id=1
+GET /api/category/1/property/getall HTTP/1.1
+Host: localhost:7000
+
+### Список всех свойств товара id=1
+GET /api/category/1/property/getvalues HTTP/1.1
+Host: localhost:7000
+
+### Список всех свойств товара id=1
+GET /api/category/property/getvalues HTTP/1.1
+Host: localhost:7000
+
+
+### Получить одно свойство товара
+GET /api/category/1/property/getone/1 HTTP/1.1
+Host: localhost:7000
+
+### Создать новое свойство товара
+POST /api/category/1/property/create HTTP/1.1
+Host: localhost:7000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg0NDEyMTc5LCJleHAiOjE2ODQ1ODQ5Nzl9.07N_C2YVRU15v1_LoJs8jFe0-PRUC5OoiL0VkMA_U6A
+Content-type: application/json; charset=utf-8
+
+{
+    "name": "Длина",
+    "type": "NUMBER",
+    "description": "Длина товара"
+}
+
+
+### Создать новое свойство товара
+POST /api/category/1/property/create HTTP/1.1
+Host: localhost:7000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg0NDEyMTc5LCJleHAiOjE2ODQ1ODQ5Nzl9.07N_C2YVRU15v1_LoJs8jFe0-PRUC5OoiL0VkMA_U6A
+Content-type: application/json; charset=utf-8
+
+{
+    "name": "Ширина",
+    "type": "NUMBER",
+    "description": "Ширина товара"
+}
+
+
+### Создать новое свойство товара
+POST /api/category/1/property/create HTTP/1.1
+Host: localhost:7000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg0NDEyMTc5LCJleHAiOjE2ODQ1ODQ5Nzl9.07N_C2YVRU15v1_LoJs8jFe0-PRUC5OoiL0VkMA_U6A
+Content-type: application/json; charset=utf-8
+
+{
+    "name": "Высота",
+    "type": "NUMBER",
+    "description": "Высота товара"
+}
+
+### Обновить свойство товара
+PUT /api/category/1/property/update/3 HTTP/1.1
+Host: localhost:7000
+Content-type: application/json; charset=utf-8
+
+{
+    "name": "Свойство товара (updated)",
+    "value": "Значение свойства (updated)"
+}
+
+### Удалить свойство товара
+DELETE /api/product/1/property/delete/3 HTTP/1.1
+Host: localhost:7000

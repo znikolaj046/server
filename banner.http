@@ -1,0 +1,94 @@
+### Список всех баннеров
+GET /api/banner/getall HTTP/1.1
+Host: localhost:7000
+
+### Получить один баннер
+GET /api/banner/getone2/4 HTTP/1.1
+Host: localhost:7000
+
+### создание баннера
+POST /api/banner/create HTTP/1.1
+Host: localhost:7000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg0NDEyMTc5LCJleHAiOjE2ODQ1ODQ5Nzl9.07N_C2YVRU15v1_LoJs8jFe0-PRUC5OoiL0VkMA_U6A
+Content-Type: multipart/form-data; boundary=MultiPartFormDataBoundary
+
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="name"
+Content-Type: text/plain; charset=utf-8
+
+Название баннера 1
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="status"
+Content-Type: text/plain; charset=utf-8
+
+1
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="image"; filename="banner.jpg"
+Content-Type: image/jpeg
+
+< ./banner.jpg
+--MultiPartFormDataBoundary--
+
+
+### обновление баннера
+POST /api/banner/update/8 HTTP/1.1
+Host: localhost:7000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg0NDEyMTc5LCJleHAiOjE2ODQ1ODQ5Nzl9.07N_C2YVRU15v1_LoJs8jFe0-PRUC5OoiL0VkMA_U6A
+Content-Type: multipart/form-data; boundary=MultiPartFormDataBoundary
+
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="description"
+Content-Type: text/plain; charset=utf-8
+
+Описание баннера 121
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="name"
+Content-Type: text/plain; charset=utf-8
+
+Название баннера 1234
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="status"
+Content-Type: text/plain; charset=utf-8
+
+1
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="image"; filename="banner.jpg"
+Content-Type: image/jpeg
+
+< ./banner.jpg
+--MultiPartFormDataBoundary--
+
+
+### обновление баннера
+POST /api/banner/update/4 HTTP/1.1
+Host: localhost:7000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg0NDEyMTc5LCJleHAiOjE2ODQ1ODQ5Nzl9.07N_C2YVRU15v1_LoJs8jFe0-PRUC5OoiL0VkMA_U6A
+Content-Type: multipart/form-data; boundary=MultiPartFormDataBoundary
+
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="description"
+Content-Type: text/plain; charset=utf-8
+
+Описание баннера 12
+
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="name"
+Content-Type: text/plain; charset=utf-8
+
+Название баннера 12
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="status"
+Content-Type: text/plain; charset=utf-8
+
+1
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="image"; filename="banner.jpg"
+Content-Type: image/jpeg
+
+< ./banner.jpg
+--MultiPartFormDataBoundary--
+
+### Удалить бренд
+DELETE /api/banner/delete/6 HTTP/1.1
+Host: localhost:7000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBtYWlsLnJ1Iiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjg0NDEyMTc5LCJleHAiOjE2ODQ1ODQ5Nzl9.07N_C2YVRU15v1_LoJs8jFe0-PRUC5OoiL0VkMA_U6A

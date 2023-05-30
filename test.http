@@ -1,0 +1,49 @@
+### Список всех товаров
+GET /api/product/getall HTTP/1.1
+Host: localhost:7000
+
+### Получить один товар
+GET /api/product/getone/1 HTTP/1.1
+Host: localhost:7000
+
+
+### создание товара, у которого есть свойства
+POST /api/product/create HTTP/1.1
+Host: localhost:7000
+Content-Type: multipart/form-data; boundary=MultiPartFormDataBoundary
+
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="name"
+Content-Type: text/plain; charset=utf-8
+
+Название товара 181
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="price"
+Content-Type: text/plain; charset=utf-8
+
+12345
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="props"
+Content-type: text/plain; charset=utf-8
+
+[{"name": "Свойство 1", "value": "Значение 1"},{"name": "Свойство 2", "value": "Значение 2"}]
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="image"; filename="picture.jpg"
+Content-Type: image/jpeg
+
+< ./picture.jpg
+--MultiPartFormDataBoundary--
+
+### Обновить товар
+PUT /api/product/update/1 HTTP/1.1
+Host: localhost:7000
+Content-type: application/json; charset=utf-8
+
+{
+    "name": "Первый товар (обновление)",
+    "price": 22222
+}
+
+### Удалить товар
+DELETE /api/product/delete/1 HTTP/1.1
+Host: localhost:7000
