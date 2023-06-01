@@ -129,12 +129,12 @@ const Banner = sequelize.define('banner', {
 
 const StaticPages = sequelize.define('pages', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    title: {type: DataTypes.STRING, allowNull: false, comment: 'Заголовок'},
+    title: {type: DataTypes.STRING, unique: true, allowNull: false, comment: 'Заголовок'},
+    alias: {type: DataTypes.STRING, unique: true, allowNull: false, comment: 'ЧПУ страницы'},
     description: {type: DataTypes.STRING, allowNull: false, comment: 'Описание'},
     text: {type: DataTypes.TEXT, allowNull: false, comment: 'Текст'},
     status: {type: DataTypes.INTEGER, allowNull: false, comment: 'Статус (отображать/не отображать)'}
 }, {comment: 'Статические страницы'})
-
 
 const ProductImage = sequelize.define('product_image', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},

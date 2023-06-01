@@ -14,7 +14,7 @@ class ProductProp {
         const values = await CategoryPropMapping.findAll({
                         fields: 'value', unique: true,
                         where: {categoryId}, 
-                        include: {model: ProductPropValueMapping, as: 'props_values', include: { model: ProductMapping, as: 'product', where:{status:1}}}
+                        include: {model: ProductPropValueMapping, as: 'props_values', include: { model: ProductMapping, as: 'product', where:{status:1, categoryId: categoryId}}}
                     })
 
         return values

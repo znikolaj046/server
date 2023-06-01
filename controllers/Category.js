@@ -21,10 +21,28 @@ class Category {
         }
     }
 
+
+    async getById(req, res, next) {
+        try {
+            if (!req.params.id) {
+                throw new Error('Не указан id категории')
+            }
+
+            const category = await CategoryModel.getById(req.params.id)
+            if (!category) {
+                throw new Error('Категория не найдена в БД')
+            }
+            res.json(category)
+        } catch(e) {
+            next(AppError.badRequest(e.message))
+        }
+    }
+
+
     async getOne(req, res, next) {
         try {
             if (!req.params.alias) {
-                throw new Error('Не указан id категории')
+                throw new Error('Не указан URL категории')
             }
 
             const category = await CategoryModel.getOne(req.params.alias)

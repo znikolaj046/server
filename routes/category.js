@@ -18,6 +18,7 @@ router.get('/:categoryId([0-9]+)/property/getall', ProductPropController.getAll)
 router.get('/:categoryId([0-9]+)/property/getvalues', ProductPropController.getValues)
 // список свойств товара
 router.get('/property/getvalues', ProductPropController.getAllValues)
+
 // одно свойство товара
 router.get('/:categoryId([0-9]+)/property/getone/:id([0-9]+)', ProductPropController.getOne)
 // создать свойство товара

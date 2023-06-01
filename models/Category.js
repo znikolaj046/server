@@ -12,10 +12,21 @@ class Category {
         return categories
     }
 
+    async getById(id) {
+        const where = {}
+        where.id = id
+        const category = await CategoryMapping.findOne({
+            where
+        })
+        if (!category) {
+            throw new Error('Категория не найдена в БД')
+        }
+        return category
+    }
+
     async getOne(alias) {
         const where = {}
         where.alias = alias
-        console.log(where)
         const category = await CategoryMapping.findOne({
             where
         })

@@ -1,0 +1,11 @@
+### Список всех страниц
+GET /api/pages/getall HTTP/1.1
+Host: localhost:7000
+
+### Получить один страницу
+GET /api/pages/getone/oplata HTTP/1.1
+Host: localhost:7000
+
+### Получить один страницу
+GET /api/pages/getbyid/1 HTTP/1.1
+Host: localhost:7000
