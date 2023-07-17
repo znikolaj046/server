@@ -1,4 +1,6 @@
 import { User as UserMapping } from './mapping.js'
+import { Role as RoleMapping } from './mapping.js'
+import sequelize from '../sequelize.js'
 import AppError from '../errors/AppError.js'
 
 class User {
@@ -16,20 +18,22 @@ class User {
     }
 
     async getByEmail(email) {
-        const user = await UserMapping.findOne({where: {email}})
+        const user = await UserMapping.findOne({where: {email}, include: {model : RoleMapping, as : 'role', where: {id:sequelize.col('user.roleId')}}})
+        
         if (!user) {
             throw new Error('Пользователь не найден в БД')
         }
+
         return user
     }
 
     async create(data) {
-        const {email, password, role} = data
+        const {email, password, roleId} = data
         const check = await UserMapping.findOne({where: {email}})
         if (check) {
             throw new Error('Пользователь уже существует')
         }
-        const user = await UserMapping.create({email, password, role})
+        const user = await UserMapping.create({email, password, roleId})
         return user
     }
 
@@ -41,7 +45,7 @@ class User {
         const {
             email = user.email,
             password = user.password,
-            role = user.role
+            role = user.roleId
         } = data
         await user.update({email, password, role})
         return user

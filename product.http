@@ -5,10 +5,13 @@ Host: localhost:7000
 ### Список всех товаров
 GET /api/product/getall HTTP/1.1
 Host: localhost:7000
+### srugamalo.beget.app:7000/api/product/getall
+GET /api/product/getall HTTP/1.1
+Host: srugamalo.beget.app:7000
 
 ### Получить один товар
 GET /api/product/getone/1 HTTP/1.1
-Host: localhost:7000
+Host: srugamalo.beget.app:7000
 
 ### Создать новый товар
 POST /api/product/create HTTP/1.1

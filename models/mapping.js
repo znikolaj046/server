@@ -58,8 +58,8 @@ const OrderStatus = sequelize.define('order_status', {
 // модель «Пользователь», таблица БД «users»
 const User = sequelize.define('user', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    name: {type: DataTypes.STRING, unique: true, comment: 'Фамилия Имя Отчество'},
-    email: {type: DataTypes.STRING, unique: true, comment: 'Email'},
+    name: {type: DataTypes.STRING, unique: false, comment: 'Фамилия Имя Отчество'},
+    email: {type: DataTypes.STRING, unique: false, comment: 'Email'},
     password: {type: DataTypes.STRING, comment: 'пароль'},
 }, {comment: 'Пользователи'})
 
@@ -71,7 +71,7 @@ const Role = sequelize.define('role', {
     edit_products: {type: DataTypes.INTEGER, comment: 'может редактировать товар'},
     edit_content: {type: DataTypes.INTEGER, comment: 'может редактировать Содержимое сайта'},
     edit_users: {type: DataTypes.INTEGER, comment: 'может редактировать пользователей'},
-}, {comment: 'Пользователи'})
+}, {comment: 'Роли пользователей'})
 
 
 // модель «Корзина», таблица БД «baskets»
@@ -121,8 +121,8 @@ const Brand = sequelize.define('brand', {
 
 const Banner = sequelize.define('banner', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    name: {type: DataTypes.STRING, unique: true, allowNull: false, comment: 'Наименование баннера'},
-    description: {type: DataTypes.STRING, unique: true, allowNull: false, comment: 'Описание баннера'},
+    name: {type: DataTypes.STRING, unique: false, allowNull: false, comment: 'Наименование баннера'},
+    description: {type: DataTypes.STRING, unique: false, allowNull: false, comment: 'Описание баннера'},
     image: {type: DataTypes.STRING, allowNull: false, comment: 'Ссылка на файл изображения'},
     status: {type: DataTypes.INTEGER, allowNull: false, comment: 'Статус (отображать/не отображать)'}
 }, {comment: 'Баннеры на главную'})

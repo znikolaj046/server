@@ -38,15 +38,16 @@ class User {
             if (!compare) {
                 throw new Error('Указан неверный пароль')
             }
-            const token = makeJwt(user.id, user.email, user.roleId)
+
+            const token = makeJwt(user.id, user.email, {"name": user.role.name, "is_admin": user.role.is_admin, "edit_products": user.role.edit_products, "edit_users": user.role.edit_users, "edit_content": user.role.edit_content})
             return res.json({token})
         } catch(e) {
             next(AppError.badRequest(e.message))
         }
     }
 
-    async check(req, res, next) {
-        const token = makeJwt(req.auth.id, req.auth.email, req.auth.roleId)
+    async check(req, res, next) {        
+        const token = makeJwt(req.auth.id, req.auth.email, req.auth.role)
         return res.json({token})
     }
 

@@ -7,11 +7,14 @@ class Product {
             
             const {categoryId = null, brandId = null, filter = null, status = 1} = req.params
             let {limit, page} = req.query
+            console.log('limit', limit)
+            console.log('page', page)
             limit = limit && /[0-9]+/.test(limit) && parseInt(limit) ? parseInt(limit) : 3
             page = page && /[0-9]+/.test(page) && parseInt(page) ? parseInt(page) : 1
             const options = {categoryId, brandId, filter, limit, page, status}
-
+            console.log('options', options)
             const products = await ProductModel.getAll(options)
+            console.log('products', products)
             res.json(products)
         } catch(e) {
             next(AppError.badRequest(e.message))
